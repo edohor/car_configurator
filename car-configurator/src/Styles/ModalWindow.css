@@ -1,9 +1,8 @@
 .modalWindowContainer {
   width: 80%;
-  height: 300px;
-  background-color: rgb(185, 209, 190);
   margin: 60px auto;
   text-align: center;
+  border: 1px solid #000000;
 }
 .modalWindowContainer .modalWindow {
   height: 100%;
@@ -15,6 +14,13 @@
   margin-top: 30px;
 }
 .modalWindowContainer .modalWindowFooter {
-  position: relative;
-  bottom: 0px;
+  margin: 30px auto 20px;
+}
+
+.modalWindowContainerQuestion {
+  text-align: left;
+  padding: 30px;
+}
+.modalWindowContainerQuestion .content {
+  margin-top: 20px;
 }/*# sourceMappingURL=ModalWindow.css.map */
