@@ -9,14 +9,19 @@ import {
 } from '../../state/reducers/configurationSlice';
 
 export default function ModalWindowNavigation() {
+  const configurationStep = useSelector(
+    (state) => state.configuration.configurationStep
+  );
   const dispatch = useDispatch();
 
   return (
     <div className="modalWindowNavigation">
       <GridContainer direction="row">
-        <GridItem>
-          <button onClick={() => dispatch(decrementStep())}>Nazad</button>
-        </GridItem>
+        {configurationStep > 1 && (
+          <GridItem>
+            <button onClick={() => dispatch(decrementStep())}>Nazad</button>
+          </GridItem>
+        )}
         <GridItem>
           <button onClick={() => dispatch(incrementStep())}>Dalje</button>
         </GridItem>
