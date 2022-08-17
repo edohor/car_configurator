@@ -1,7 +1,7 @@
 export const getCarMakes = () => {
   return [
     'Peugeot',
-    'Volkwagen',
+    'Volkswagen',
     'Citroen',
     'Audi',
     'Bmw',

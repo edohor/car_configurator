@@ -5,12 +5,17 @@ import GridContainer from '../Layout/Grid/GridContainer';
 import ModalWindowNavigation from './ModalWindowNavigation';
 import CarMakeQuestion from '../../Components/Configurator/CarMakeQuestion';
 import ServicesQuestion from '../Configurator/ServicesQuestion';
+import ContactQuestion from '../Configurator/ContactQuestion';
+import SummaryScreen from '../Configurator/SummaryScreen';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function ModalWindow() {
   const configurationStep = useSelector(
     (state) => state.configuration.configurationStep
   );
+
+  const state = useSelector((state) => state.configuration);
+  console.log('state', state);
 
   return (
     <div className="modalWindowContainer">
@@ -23,7 +28,11 @@ export default function ModalWindow() {
             <CarMakeQuestion />
           ) : configurationStep === 2 ? (
             <ServicesQuestion />
-          ) : null}
+          ) : configurationStep === 3 ? (
+            <ContactQuestion />
+          ) : (
+            <SummaryScreen />
+          )}
         </GridItem>
         <GridItem className="modalWindowFooter">
           <ModalWindowNavigation />

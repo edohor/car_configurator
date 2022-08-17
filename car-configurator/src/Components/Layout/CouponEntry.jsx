@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
 import { getLocalizedValue } from '../../Helpers/questionHelper';
+import { useSelector } from 'react-redux';
 
 export default function CouponEntry(props) {
+  const state = useSelector((state) => state.configuration);
   const [couponClicked, setCouponClicked] = useState(false);
   const [couponValidated, setCouponValidated] = useState(false);
   const [showWrongCouponMessage, setShowWrongCouponMessage] = useState(false);
   const [couponText, setCouponText] = useState('');
-  const [discount, setdiscount] = useState(0);
+  const [discount, setdiscount] = useState(
+    state?.discount ? state.discount : 0
+  );
+
+  useEffect(() => {
+    if (props?.applyDiscount && props.applyDiscount) {
+      setCouponClicked(true);
+      setCouponValidated(true);
+    }
+  }, [props, props.applyDiscount]);
 
   const calculateDiscount = () => {
     props.baseTotal && setdiscount(props.baseTotal * 0.3);
@@ -18,10 +27,17 @@ export default function CouponEntry(props) {
     if (couponText === 'Tokić123') {
       setCouponValidated(true);
       calculateDiscount();
-      props.applyDiscount(true);
+      props.handleApplyDiscount(true);
     } else {
       setShowWrongCouponMessage(true);
     }
+  };
+
+  const changeToCouponView = () => {
+    setTimeout(() => {
+      document.getElementById('coupon').focus();
+    }, 10);
+    setCouponClicked(true);
   };
 
   useEffect(() => {
@@ -48,13 +64,12 @@ export default function CouponEntry(props) {
         ) : (
           <div>
             <div>Hvala vam, unijeli ste ispravan kod kupona</div>
-
             <div>OSNOVICA: {getLocalizedValue(props.baseTotal)} kn</div>
             <div>Popust (30%): -{getLocalizedValue(discount)} kn</div>
           </div>
         )
       ) : (
-        <div onClick={() => setCouponClicked(true)}>Imam kupon</div>
+        <div onClick={() => changeToCouponView()}>Imam kupon</div>
       )}
     </div>
   );

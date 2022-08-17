@@ -5,12 +5,14 @@ import {
   FormControlLabel,
   FormControl,
 } from '@mui/material';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from './Grid/GridItem';
+import GridContainer from './Grid/GridContainer';
 
 export default function RadioButtonsGroup(props) {
   const { options, ...rest } = props;
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(
+    props?.selectedOption ? props.selectedOption : null
+  );
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -33,7 +35,7 @@ export default function RadioButtonsGroup(props) {
               <GridItem key={option}>
                 <FormControlLabel
                   value={option}
-                  control={<Radio />}
+                  control={<Radio checked={option === props.selectedOption} />}
                   label={option}
                   sx={{
                     '& .MuiSvgIcon-root': {

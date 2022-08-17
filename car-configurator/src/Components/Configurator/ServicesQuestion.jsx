@@ -8,16 +8,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   selectServices,
   saveTotal,
+  saveDiscounted,
+  saveDiscount,
+  saveDiscountedTotal,
 } from '../../state/reducers/configurationSlice';
 
 export default function ServicesQuestion() {
   const services = getServices();
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.configuration);
   const dispatch = useDispatch();
-  const [selectedServices, setSelectedServices] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [baseTotal, setBaseTotal] = useState(0);
-  const [applyDiscount, setApplyDiscount] = useState(false);
+
+  const [selectedServices, setSelectedServices] = useState(
+    state?.services ? state.services : []
+  );
+  const [total, setTotal] = useState(
+    state?.discountedTotal ? state.discountedTotal : 0
+  );
+  const [baseTotal, setBaseTotal] = useState(state?.total ? state.total : 0);
+  const [applyDiscount, setApplyDiscount] = useState(
+    state?.discounted ? state.discounted : false
+  );
 
   useEffect(() => {
     calculateTotal();
@@ -29,7 +39,9 @@ export default function ServicesQuestion() {
   }, [applyDiscount]);
 
   useEffect(() => {
-    dispatch(saveTotal(total));
+    dispatch(saveTotal(baseTotal));
+    dispatch(saveDiscount(baseTotal * 0.3));
+    dispatch(saveDiscountedTotal(total));
   }, [total]);
 
   const calculateTotal = () => {
@@ -44,7 +56,10 @@ export default function ServicesQuestion() {
     setSelectedServices(services);
   };
 
-  //   console.log('state', state);
+  const handleApplyDiscount = (discountApplied) => {
+    setApplyDiscount(discountApplied);
+    dispatch(saveDiscounted(true));
+  };
 
   return (
     <div className="modalWindowContainerQuestion">
@@ -56,12 +71,14 @@ export default function ServicesQuestion() {
           <CheckboxGroup
             options={services}
             buttonSelected={(services) => saveServices(services)}
+            selectedOptions={selectedServices}
           />
         </GridItem>
         <GridItem className="coupon">
           <CouponEntry
             baseTotal={baseTotal}
-            applyDiscount={(apply) => setApplyDiscount(apply)}
+            handleApplyDiscount={(apply) => handleApplyDiscount(apply)}
+            applyDiscount={applyDiscount}
           />
         </GridItem>
         <GridItem className="total">

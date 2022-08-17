@@ -3,6 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   configurationStep: 1,
   carMake: null,
+  services: [],
+  total: 0,
+  discounted: false,
+  discount: 0,
+  discountedTotal: 0,
+  userInfo: {},
 };
 
 export const configurationSlice = createSlice({
@@ -24,6 +30,19 @@ export const configurationSlice = createSlice({
     saveTotal: (state, action) => {
       state.total = action.payload;
     },
+    saveDiscounted: (state, action) => {
+      state.discounted = action.payload;
+    },
+    saveDiscount: (state, action) => {
+      state.discount = action.payload;
+    },
+    saveDiscountedTotal: (state, action) => {
+      state.discountedTotal = action.payload;
+    },
+    saveUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    sendForm: (state, action) => {},
   },
 });
 
@@ -34,6 +53,11 @@ export const {
   selectCarMake,
   selectServices,
   saveTotal,
+  saveDiscounted,
+  saveDiscount,
+  saveDiscountedTotal,
+  saveUserInfo,
+  sendForm,
 } = configurationSlice.actions;
 
 export default configurationSlice.reducer;

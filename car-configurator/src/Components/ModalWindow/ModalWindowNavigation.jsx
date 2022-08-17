@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   incrementStep,
   decrementStep,
+  sendForm,
 } from '../../state/reducers/configurationSlice';
 
 export default function ModalWindowNavigation() {
@@ -23,7 +24,11 @@ export default function ModalWindowNavigation() {
           </GridItem>
         )}
         <GridItem>
-          <button onClick={() => dispatch(incrementStep())}>Dalje</button>
+          {configurationStep < 4 ? (
+            <button onClick={() => dispatch(incrementStep())}>Dalje</button>
+          ) : (
+            <button onClick={() => dispatch(sendForm())}>Pošalji</button>
+          )}
         </GridItem>
       </GridContainer>
     </div>

@@ -5,10 +5,12 @@ import GridContainer from '../Layout/Grid/GridContainer';
 
 export default function CheckboxGroup(props) {
   const { options, ...rest } = props;
-  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(
+    props?.selectedOptions ? props.selectedOptions : []
+  );
 
   const handleChange = (selectedService) => {
-    let allSelectedServices = [...selectedServices];
+    let allSelectedServices = [...selectedOptions];
     if (allSelectedServices.length === 0) {
       allSelectedServices.push(selectedService);
     } else {
@@ -24,32 +26,39 @@ export default function CheckboxGroup(props) {
         allSelectedServices.push(selectedService);
       }
     }
-    setSelectedServices(allSelectedServices);
+    setSelectedOptions(allSelectedServices);
   };
 
   useEffect(() => {
-    props.buttonSelected && props.buttonSelected(selectedServices);
-  }, [selectedServices]);
+    props.buttonSelected && props.buttonSelected(selectedOptions);
+  }, [selectedOptions]);
 
   return (
     <FormGroup>
       <GridContainer>
         {options &&
-          options.map((option) => (
-            <GridItem key={option.label}>
-              <FormControlLabel
-                value={option}
-                control={<Checkbox />}
-                label={option.label}
-                onChange={() => handleChange(option)}
-                sx={{
-                  '& .MuiSvgIcon-root': {
-                    fontSize: 14,
-                  },
-                }}
-              />
-            </GridItem>
-          ))}
+          options.map((option) => {
+            let checkedOption = selectedOptions.some((selectedOption) => {
+              if (selectedOption.label === option.label) {
+                return true;
+              }
+            });
+            return (
+              <GridItem key={option.label}>
+                <FormControlLabel
+                  value={option}
+                  control={<Checkbox checked={checkedOption} />}
+                  label={option.label}
+                  onChange={() => handleChange(option)}
+                  sx={{
+                    '& .MuiSvgIcon-root': {
+                      fontSize: 14,
+                    },
+                  }}
+                />
+              </GridItem>
+            );
+          })}
       </GridContainer>
     </FormGroup>
   );
