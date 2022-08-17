@@ -19,13 +19,21 @@ export const configurationSlice = createSlice({
       state.carMake = action.payload;
     },
     selectServices: (state, action) => {
-      state.carMake = action.payload;
+      state.services = action.payload;
+    },
+    saveTotal: (state, action) => {
+      state.total = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { incrementStep, decrementStep, selectCarMake, selectServices } =
-  configurationSlice.actions;
+export const {
+  incrementStep,
+  decrementStep,
+  selectCarMake,
+  selectServices,
+  saveTotal,
+} = configurationSlice.actions;
 
 export default configurationSlice.reducer;

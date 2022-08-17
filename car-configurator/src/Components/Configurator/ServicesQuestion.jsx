@@ -2,27 +2,49 @@ import React, { useState, useEffect } from 'react';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
 import CheckboxGroup from '../Layout/CheckboxGroup';
-import { getServices } from '../../Helpers/questionHelper';
+import CouponEntry from '../Layout/CouponEntry';
+import { getServices, getLocalizedValue } from '../../Helpers/questionHelper';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectServices } from '../../state/reducers/configurationSlice';
+import {
+  selectServices,
+  saveTotal,
+} from '../../state/reducers/configurationSlice';
 
 export default function ServicesQuestion() {
   const services = getServices();
-  const state = useSelector((state) => state.carMake);
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [selectedServices, setSelectedServices] = useState([]);
-  const [couponClicked, setCouponClicked] = useState(false);
   const [total, setTotal] = useState(0);
+  const [baseTotal, setBaseTotal] = useState(0);
+  const [applyDiscount, setApplyDiscount] = useState(false);
 
   useEffect(() => {
+    calculateTotal();
     dispatch(selectServices(selectedServices));
   }, [selectedServices]);
 
-  const saveServices = (services) => {
-    console.log('services', services);
-    // setSelectedServices()
-    // setTotal()
+  useEffect(() => {
+    calculateTotal();
+  }, [applyDiscount]);
+
+  useEffect(() => {
+    dispatch(saveTotal(total));
+  }, [total]);
+
+  const calculateTotal = () => {
+    let newTotal = 0;
+    selectedServices.forEach((service) => (newTotal += service.price));
+    setBaseTotal(newTotal);
+    newTotal = applyDiscount ? newTotal - newTotal * 0.3 : newTotal;
+    setTotal(newTotal);
   };
+
+  const saveServices = (services) => {
+    setSelectedServices(services);
+  };
+
+  //   console.log('state', state);
 
   return (
     <div className="modalWindowContainerQuestion">
@@ -37,14 +59,13 @@ export default function ServicesQuestion() {
           />
         </GridItem>
         <GridItem className="coupon">
-          {couponClicked ? (
-            <div>UNOS</div>
-          ) : (
-            <div onClick={() => setCouponClicked(true)}>Imam kupon</div>
-          )}
+          <CouponEntry
+            baseTotal={baseTotal}
+            applyDiscount={(apply) => setApplyDiscount(apply)}
+          />
         </GridItem>
         <GridItem className="total">
-          <div>Ukupno: {total} kn</div>
+          <div>Ukupno: {getLocalizedValue(total)} kn</div>
         </GridItem>
       </GridContainer>
     </div>

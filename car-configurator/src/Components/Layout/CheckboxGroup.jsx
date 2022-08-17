@@ -5,28 +5,43 @@ import GridContainer from '../Layout/Grid/GridContainer';
 
 export default function CheckboxGroup(props) {
   const { options, ...rest } = props;
-  const [value, setValue] = useState();
+  const [selectedServices, setSelectedServices] = useState([]);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (selectedService) => {
+    let allSelectedServices = [...selectedServices];
+    if (allSelectedServices.length === 0) {
+      allSelectedServices.push(selectedService);
+    } else {
+      if (
+        allSelectedServices.filter((e) => {
+          return e.label === selectedService.label;
+        }).length > 0
+      ) {
+        allSelectedServices = allSelectedServices.filter((service) => {
+          return service.label !== selectedService.label;
+        });
+      } else {
+        allSelectedServices.push(selectedService);
+      }
+    }
+    setSelectedServices(allSelectedServices);
   };
 
   useEffect(() => {
-    console.log('value', value);
-    props.buttonSelected && props.buttonSelected(value);
-  }, [value]);
+    props.buttonSelected && props.buttonSelected(selectedServices);
+  }, [selectedServices]);
 
   return (
     <FormGroup>
       <GridContainer>
         {options &&
           options.map((option) => (
-            <GridItem key={option}>
+            <GridItem key={option.label}>
               <FormControlLabel
                 value={option}
                 control={<Checkbox />}
                 label={option.label}
-                onChange={handleChange}
+                onChange={() => handleChange(option)}
                 sx={{
                   '& .MuiSvgIcon-root': {
                     fontSize: 14,

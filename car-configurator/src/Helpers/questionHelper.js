@@ -24,3 +24,10 @@ export const getServices = () => {
     { label: 'Zamjena ulja u kočnicama (229kn)', price: 229 },
   ];
 };
+
+export const getLocalizedValue = (value) => {
+  return value.toLocaleString('hr-HR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
