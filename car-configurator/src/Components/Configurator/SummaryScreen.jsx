@@ -2,10 +2,69 @@ import React, { useState, useEffect } from 'react';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserInfo } from '../../state/reducers/configurationSlice';
+import SummaryCard from '../Layout/SummaryCard';
+import { getLocalizedValue } from '../../Helpers/questionHelper';
 
 export default function SummaryScreen() {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.configuration);
+
+  const carMakeContent = {
+    contentLeft: [state.carMake],
+    contentRight: null,
+  };
+
+  const getServicesNames = () => {
+    let serviceNames = [];
+    state.services.forEach((service) => {
+      serviceNames.push(service.label.substring(0, service.label.indexOf('(')));
+    });
+    return serviceNames;
+  };
+
+  const getServicesPrices = () => {
+    let servicePrices = [];
+    state.services.forEach((service) => {
+      servicePrices.push(getLocalizedValue(service.price) + ' kn');
+    });
+    state.discounted &&
+      servicePrices.push(
+        'Popust (30%): -' + getLocalizedValue(state.discount) + ' kn'
+      );
+    servicePrices.push(
+      'UKUPNO ' + getLocalizedValue(state.discountedTotal) + ' kn'
+    );
+    return servicePrices;
+  };
+
+  const servicesContent = {
+    contentLeft: getServicesNames(),
+    contentRight: getServicesPrices(),
+  };
+
+  const getUserNameAndPhoneContent = () => {
+    let nameAndPhone = [];
+    nameAndPhone.push(state.userInfo.name);
+    nameAndPhone.push(state.userInfo.phoneNumber);
+    return nameAndPhone;
+  };
+
+  const getUserEmailAndNoteContent = () => {
+    let nameAndPhone = [];
+    nameAndPhone.push(state.userInfo.email);
+    nameAndPhone.push(state.userInfo.note);
+    return nameAndPhone;
+  };
+
+  const userNameAndPhoneContent = {
+    contentLeft: ['Ime i prezime', 'Broj telefona'],
+    contentRight: getUserNameAndPhoneContent(),
+  };
+
+  const userEmailAndNoteContent = {
+    contentLeft: ['Email adresa', 'Napomena'],
+    contentRight: getUserEmailAndNoteContent(),
+  };
 
   return (
     <div className="modalWindowContainerQuestion">
@@ -23,17 +82,34 @@ export default function SummaryScreen() {
           </div>
         </GridItem>
         <GridItem className="content">
-          <GridContainer direction="row">
+          <GridContainer direction="column">
             <GridItem>
-              <GridContainer direction="column">
-                <GridItem className="title"></GridItem>
-                <GridItem className="content"></GridItem>
+              <GridContainer direction="row">
+                <GridItem className="inputContainer">
+                  <SummaryCard
+                    title={'Model vozila'}
+                    content={carMakeContent}
+                  />
+                </GridItem>
+                <GridItem className="inputContainer">
+                  <SummaryCard
+                    title={'Odabrane usluge'}
+                    content={servicesContent}
+                  />
+                </GridItem>
               </GridContainer>
             </GridItem>
-            <GridItem>
-              <GridContainer direction="column">
-                <GridItem className="title"></GridItem>
-                <GridItem className="content"></GridItem>
+            <GridItem className="inputContainer">
+              <GridContainer direction="row">
+                <GridItem className="inputContainer">
+                  <SummaryCard
+                    title={'Kontakt podaci'}
+                    content={userNameAndPhoneContent}
+                  />
+                </GridItem>
+                <GridItem className="inputContainer">
+                  <SummaryCard title={''} content={userEmailAndNoteContent} />
+                </GridItem>
               </GridContainer>
             </GridItem>
           </GridContainer>
