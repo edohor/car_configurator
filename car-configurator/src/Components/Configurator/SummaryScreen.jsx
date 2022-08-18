@@ -26,13 +26,8 @@ export default function SummaryScreen() {
     state.services.forEach((service) => {
       servicePrices.push(getLocalizedValue(service.price) + ' kn');
     });
-    state.discounted &&
-      servicePrices.push(
-        'Popust (30%): -' + getLocalizedValue(state.discount) + ' kn'
-      );
-    servicePrices.push(
-      'UKUPNO ' + getLocalizedValue(state.discountedTotal) + ' kn'
-    );
+    state.discounted && servicePrices.push(getLocalizedValue(state.discount));
+    servicePrices.push(getLocalizedValue(state.discountedTotal));
     return servicePrices;
   };
 
@@ -82,7 +77,7 @@ export default function SummaryScreen() {
         </GridItem>
         <GridItem className="content">
           <GridContainer direction="column">
-            <GridItem>
+            <GridItem className="summaryRow">
               <GridContainer direction="row">
                 <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard
@@ -102,7 +97,7 @@ export default function SummaryScreen() {
                 </GridItem>
               </GridContainer>
             </GridItem>
-            <GridItem>
+            <GridItem className="summaryRow">
               <GridContainer direction="row">
                 <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard

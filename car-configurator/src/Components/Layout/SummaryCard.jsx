@@ -1,11 +1,12 @@
 import React from 'react';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { jumpToStep } from '../../state/reducers/configurationSlice';
 
 export default function SummaryCard(props) {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.configuration);
   const { title, content, displayEditButton, step } = props;
 
   return (
@@ -27,7 +28,10 @@ export default function SummaryCard(props) {
             )}
           </GridContainer>
         </GridItem>
-        <GridItem className="content">
+        <GridItem
+          className="content"
+          style={{ marginTop: title === '' ? '52px' : '20px' }}
+        >
           <GridContainer direction="row" justifyContent="space-between">
             <GridItem className="title">
               <GridContainer direction="column">
@@ -44,10 +48,26 @@ export default function SummaryCard(props) {
             <GridItem className="title">
               <GridContainer direction="column">
                 {content.contentRight &&
-                  content.contentRight.map((rightContent) => {
+                  content.contentRight.map((rightContent, ix) => {
                     return (
                       <GridItem className="title">
-                        <div className="rightContentText">{rightContent}</div>
+                        {step === 2 &&
+                        state.discounted &&
+                        ix === content.contentRight.length - 2 ? (
+                          <div className="rightContentText">
+                            Popust (30%): -{rightContent} KN
+                          </div>
+                        ) : step === 2 &&
+                          ix === content.contentRight.length - 1 ? (
+                          <div className="rightContentText">
+                            UKUPNO:{' '}
+                            <div className="rightContentTotalValue">
+                              {rightContent} KN
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="rightContentText">{rightContent}</div>
+                        )}
                       </GridItem>
                     );
                   })}

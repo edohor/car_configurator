@@ -27,12 +27,6 @@ export default function ContactQuestion() {
     dispatch(saveUserInfo(userInfo));
   }, [name, phoneNumber, emailAddress, note]);
 
-  const checkEmail = (email) => {
-    console.log('test', /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email));
-    const isEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
-    setEmailAddress(email);
-  };
-
   return (
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">

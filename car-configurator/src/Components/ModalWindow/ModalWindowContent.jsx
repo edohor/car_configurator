@@ -7,6 +7,7 @@ import CarMakeQuestion from '../Configurator/CarMakeQuestion';
 import ServicesQuestion from '../Configurator/ServicesQuestion';
 import ContactQuestion from '../Configurator/ContactQuestion';
 import SummaryScreen from '../Configurator/SummaryScreen';
+import ClosingScreen from '../Configurator/ClosingScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   incrementStep,
@@ -20,7 +21,6 @@ export default function ModalWindowContent(props) {
   const state = useSelector((state) => state.configuration);
 
   const [showWarningMessage, setShowWarningMessage] = useState(false);
-
   const [warningMessageText, setWarningMessageText] = useState('');
 
   const configurationStep = useSelector(
@@ -109,16 +109,20 @@ export default function ModalWindowContent(props) {
             <ServicesQuestion />
           ) : configurationStep === 3 ? (
             <ContactQuestion />
-          ) : (
+          ) : configurationStep === 4 ? (
             <SummaryScreen />
+          ) : (
+            <ClosingScreen closeModal={() => closeModalWindow()} />
           )}
           {showWarningMessage && <div>{warningMessageText}</div>}
         </GridItem>
         <GridItem className="modalWindowFooter">
-          <ModalWindowNavigation
-            goNext={(step) => goNext(step)}
-            goBack={(step) => goBack(step)}
-          />
+          {configurationStep < 5 && (
+            <ModalWindowNavigation
+              goNext={(step) => goNext(step)}
+              goBack={(step) => goBack(step)}
+            />
+          )}
         </GridItem>
       </GridContainer>
     </div>

@@ -31,7 +31,12 @@ export default function ConfiguratorStarterPage() {
           <button onClick={() => openModalWindow()}>Pokreni</button>
         </GridItem>
       </GridContainer>
-      <Modal open={modalWindowOpened} onClose={() => closeModalWindow()}>
+      <Modal
+        open={modalWindowOpened}
+        onClose={() => closeModalWindow()}
+        className="modalWindow"
+        style={{}}
+      >
         <ModalWindowContent closeModalWindow={() => closeModalWindow()} />
       </Modal>
     </div>
