@@ -71,7 +71,7 @@ export default function SummaryScreen() {
         <GridItem className="title">
           <div>Korak 4: Pregled i potvrda vašeg odabira</div>
         </GridItem>
-        <GridItem className="title">
+        <GridItem className="summaryText">
           <div>
             Molimo vas da još jednom pregledate i potvrdite unesene podatke.
             Ukoliko želite promijeniti neki od podataka, možete pritisnuti gumb
@@ -84,7 +84,7 @@ export default function SummaryScreen() {
           <GridContainer direction="column">
             <GridItem>
               <GridContainer direction="row">
-                <GridItem className="inputContainer">
+                <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard
                     title={'Model vozila'}
                     content={carMakeContent}
@@ -92,7 +92,7 @@ export default function SummaryScreen() {
                     step={1}
                   />
                 </GridItem>
-                <GridItem className="inputContainer">
+                <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard
                     title={'Odabrane usluge'}
                     content={servicesContent}
@@ -102,9 +102,9 @@ export default function SummaryScreen() {
                 </GridItem>
               </GridContainer>
             </GridItem>
-            <GridItem className="inputContainer">
+            <GridItem>
               <GridContainer direction="row">
-                <GridItem className="inputContainer">
+                <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard
                     title={'Kontakt podaci'}
                     content={userNameAndPhoneContent}
@@ -112,7 +112,7 @@ export default function SummaryScreen() {
                     step={3}
                   />
                 </GridItem>
-                <GridItem className="inputContainer">
+                <GridItem className="summaryCardContainer" xs={6}>
                   <SummaryCard
                     title={''}
                     content={userEmailAndNoteContent}

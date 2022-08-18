@@ -74,15 +74,33 @@ export default function ServicesQuestion() {
             selectedOptions={selectedServices}
           />
         </GridItem>
-        <GridItem className="coupon">
-          <CouponEntry
-            baseTotal={baseTotal}
-            handleApplyDiscount={(apply) => handleApplyDiscount(apply)}
-            applyDiscount={applyDiscount}
-          />
-        </GridItem>
-        <GridItem className="total">
-          <div>Ukupno: {getLocalizedValue(total)} kn</div>
+        <GridItem className="totalInfo">
+          <GridContainer direction="row" justifyContent="flex-end">
+            <GridItem className="pricesAndCouponContainer">
+              <GridContainer direction="column" className="pricesAndCoupon">
+                <GridItem
+                  className="couponEntry"
+                  xs={3}
+                  justifyContent="flex-end"
+                  direction="row-reverse"
+                >
+                  <CouponEntry
+                    baseTotal={baseTotal}
+                    handleApplyDiscount={(apply) => handleApplyDiscount(apply)}
+                    applyDiscount={applyDiscount}
+                  />
+                </GridItem>
+                <GridItem className="totalContainer">
+                  <div className="totalInfo">
+                    Ukupno:{' '}
+                    <div className="totalInfoValue">
+                      {getLocalizedValue(total)} kn
+                    </div>
+                  </div>
+                </GridItem>
+              </GridContainer>
+            </GridItem>
+          </GridContainer>
         </GridItem>
       </GridContainer>
     </div>

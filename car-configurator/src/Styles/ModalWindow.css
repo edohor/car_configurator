@@ -1,26 +1,173 @@
+@import url(http://fonts.googleapis.com/css?family=ABeeZee);
+button {
+  background-color: rgb(206, 206, 206);
+  box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+  color: #000;
+  padding: 5px;
+  border: 2px solid #000;
+  font-family: "abeezee";
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.basePage {
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+  text-align: center;
+  font-weight: 500;
+  font-family: "abeezee";
+  font-size: 16px;
+}
+.basePage .starterButton {
+  margin-top: 20px;
+}
+
 .modalWindowContainer {
   width: 80%;
-  margin: 60px auto;
+  margin: 0 auto;
   text-align: center;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
+  position: relative;
+  top: 10%;
+  font-family: "abeezee";
+  font-size: 16px;
+  background-color: #fff;
 }
 .modalWindowContainer .modalWindow {
   height: 100%;
+  padding: 20px;
 }
-.modalWindowContainer .modalWindowHeader {
-  margin-top: 10px;
+.modalWindowContainer .modalWindowHeaderTitle {
+  text-align: center;
+  margin: 0 auto;
 }
 .modalWindowContainer .modalWindowContent {
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .modalWindowContainer .modalWindowFooter {
-  margin: 30px auto 20px;
+  position: relative;
+  height: 30px;
+  width: 100%;
 }
-
-.modalWindowContainerQuestion {
+.modalWindowContainer .modalWindowFooter .modalWindowNavigation {
+  position: absolute;
+  right: 40px;
+}
+.modalWindowContainer .modalWindowFooter .modalWindowNavigation .forwardNavigationContainer {
+  margin-left: 20px;
+}
+.modalWindowContainer .modalWindowFooter button {
+  min-width: 100px;
+}
+.modalWindowContainer .modalWindowHeaderCloseButton button {
+  border: 0;
+  background-color: #fff;
+  font-size: 30px;
+  font-weight: 1200;
+}
+.modalWindowContainer .modalWindowContainerQuestion {
   text-align: left;
   padding: 30px;
 }
-.modalWindowContainerQuestion .content {
+.modalWindowContainer .modalWindowContainerQuestion .content {
   margin-top: 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  max-height: 200px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .inputContainer {
+  padding: 0 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .dataInput {
+  padding: 5px;
+  border: 2px solid #000;
+  margin-bottom: 20px;
+  min-width: 200px;
+  width: 100%;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .textAreaInput {
+  padding: 5px;
+  border: 2px solid #000;
+  margin-bottom: 20px;
+  min-width: 200px;
+  width: 100%;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer {
+  margin-top: 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer .summaryCardQuestion {
+  width: 100%;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer .summaryCardQuestion .summaryTitleContainer {
+  line-height: 32px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer .summaryCardQuestion .summaryTitleContainer .summaryTitle {
+  margin-right: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer .summaryCardQuestion .leftContentText {
+  font-size: 12px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer .summaryCardQuestion .rightContentText {
+  font-size: 12px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .summaryText {
+  font-size: 14px;
+  margin-top: 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .totalInfo {
+  height: 120px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .pricesAndCoupon {
+  margin-top: 40px;
+  text-align: right;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .pricesAndCoupon .couponEntryText {
+  color: rgb(46, 46, 150);
+  text-decoration: underline;
+  font-size: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponEntryContainer {
+  margin-bottom: 10px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponErrorMessage {
+  color: rgb(209, 40, 40);
+  font-size: 14px;
+  margin-top: 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponSuccessMessage {
+  color: rgb(33, 175, 64);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .baseTotalInfo {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .discountInfo {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .infoValue {
+  font-weight: bold;
+  display: inline;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .totalInfo {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .totalInfoValue {
+  font-weight: bold;
+  display: inline;
+}
+.modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .totalContainer {
+  text-align: right;
 }/*# sourceMappingURL=ModalWindow.css.map */

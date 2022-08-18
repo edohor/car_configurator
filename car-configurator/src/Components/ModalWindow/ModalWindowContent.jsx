@@ -3,7 +3,7 @@ import '../../Styles/ModalWindow.css';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
 import ModalWindowNavigation from './ModalWindowNavigation';
-import CarMakeQuestion from '../../Components/Configurator/CarMakeQuestion';
+import CarMakeQuestion from '../Configurator/CarMakeQuestion';
 import ServicesQuestion from '../Configurator/ServicesQuestion';
 import ContactQuestion from '../Configurator/ContactQuestion';
 import SummaryScreen from '../Configurator/SummaryScreen';
@@ -13,8 +13,9 @@ import {
   decrementStep,
   jumpToStep,
 } from '../../state/reducers/configurationSlice';
+import { CloseIcon } from '../../assets/iconsList';
 
-export default function ModalWindow(props) {
+export default function ModalWindowContent(props) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.configuration);
 
@@ -62,7 +63,9 @@ export default function ModalWindow(props) {
         if (
           state.userInfo.name === '' ||
           state.userInfo.phoneNumber === '' ||
-          state.userInfo.email === ''
+          state.userInfo.email === '' ||
+          /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(state.userInfo.email) ===
+            false
         ) {
           displayWarningMessage('Molimo unesite obavezne podatke');
         } else {
@@ -83,13 +86,19 @@ export default function ModalWindow(props) {
   return (
     <div className="modalWindowContainer">
       <GridContainer direction="column" className="modalWindow">
-        <GridItem className="modalWindowHeader">
-          <GridContainer direction="row" className="modalWindow">
+        <GridItem>
+          <GridContainer direction="row">
             <GridItem className="modalWindowHeaderTitle">
               <div>Konfigurator servisa</div>
             </GridItem>
             <GridItem className="modalWindowHeaderCloseButton">
-              <button onClick={() => closeModalWindow()}>X</button>
+              <img
+                src={CloseIcon}
+                alt="close"
+                height="40px"
+                width="40px"
+                onClick={() => closeModalWindow()}
+              />
             </GridItem>
           </GridContainer>
         </GridItem>
@@ -103,9 +112,9 @@ export default function ModalWindow(props) {
           ) : (
             <SummaryScreen />
           )}
+          {showWarningMessage && <div>{warningMessageText}</div>}
         </GridItem>
         <GridItem className="modalWindowFooter">
-          {showWarningMessage && <div>{warningMessageText}</div>}
           <ModalWindowNavigation
             goNext={(step) => goNext(step)}
             goBack={(step) => goBack(step)}

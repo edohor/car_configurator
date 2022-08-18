@@ -3,7 +3,6 @@ import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserInfo } from '../../state/reducers/configurationSlice';
-import { TextField } from '@mui/material';
 
 export default function ContactQuestion() {
   const dispatch = useDispatch();
@@ -28,6 +27,12 @@ export default function ContactQuestion() {
     dispatch(saveUserInfo(userInfo));
   }, [name, phoneNumber, emailAddress, note]);
 
+  const checkEmail = (email) => {
+    console.log('test', /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email));
+    const isEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+    setEmailAddress(email);
+  };
+
   return (
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
@@ -35,52 +40,54 @@ export default function ContactQuestion() {
           <div>Korak 3: Vaši kontakt podaci</div>
         </GridItem>
         <GridItem className="content">
-          <GridContainer direction="column">
+          <GridContainer direction="column" className="dataInputContainer">
             <GridItem>
-              <GridContainer direction="row">
-                <GridItem className="inputContainer">
-                  <TextField
-                    id="name"
-                    value={name}
+              <GridContainer direction="row" justifyContent="space-between">
+                <GridItem className="inputContainer" xs={6}>
+                  <input
+                    type="text"
                     placeholder="Ime i prezime*"
-                    size="small"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
+                    className="dataInput"
                   />
                 </GridItem>
-                <GridItem className="inputContainer">
-                  <TextField
-                    id="email"
-                    value={emailAddress}
+                <GridItem className="inputContainer" xs={6}>
+                  <input
+                    type="text"
                     placeholder="Email adresa*"
-                    size="small"
+                    value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}
+                    className="dataInput"
                   />
                 </GridItem>
               </GridContainer>
             </GridItem>
             <GridItem>
-              <GridContainer direction="row">
-                <GridItem className="inputContainer">
-                  <TextField
-                    id="phoneNumber"
-                    value={phoneNumber}
+              <GridContainer direction="row" justifyContent="space-between">
+                <GridItem className="inputContainer" xs={6}>
+                  <input
+                    type="text"
                     placeholder="Broj telefona*"
-                    size="small"
+                    value={phoneNumber}
                     onChange={(e) =>
-                      /^[0-9]+$/.test(e.target.value)
+                      /^[0-9]+$|^$/.test(e.target.value)
                         ? setPhoneNumber(e.target.value)
+                        : e.target.value == null
+                        ? ''
                         : null
                     }
+                    className="dataInput"
                   />
                 </GridItem>
-                <GridItem className="inputContainer">
-                  <TextField
-                    id="note"
-                    multiline
-                    rows={4}
-                    value={note}
+                <GridItem className="inputContainer" xs={6}>
+                  <textarea
                     placeholder="Napomena (opcionalno)"
+                    value={note}
                     onChange={(e) => setNote(e.target.value)}
+                    rows={4}
+                    style={{ resize: 'none' }}
+                    className="textAreaInput"
                   />
                 </GridItem>
               </GridContainer>

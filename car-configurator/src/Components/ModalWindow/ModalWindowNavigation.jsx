@@ -19,7 +19,7 @@ export default function ModalWindowNavigation(props) {
             <button onClick={() => props.goBack()}>Nazad</button>
           </GridItem>
         )}
-        <GridItem>
+        <GridItem className="forwardNavigationContainer">
           {configurationStep < 4 ? (
             <button onClick={() => props.goNext(configurationStep)}>
               Dalje

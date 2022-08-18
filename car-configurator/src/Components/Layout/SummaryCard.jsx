@@ -9,11 +9,11 @@ export default function SummaryCard(props) {
   const { title, content, displayEditButton, step } = props;
 
   return (
-    <div className="modalWindowContainerQuestion">
+    <div className="summaryCardQuestion">
       <GridContainer direction="column">
         <GridItem className="title">
-          <GridContainer direction="row">
-            <GridItem className="title">
+          <GridContainer direction="row" className="summaryTitleContainer">
+            <GridItem className="summaryTitle">
               <div>{title}</div>
             </GridItem>
             {displayEditButton && (
@@ -28,14 +28,14 @@ export default function SummaryCard(props) {
           </GridContainer>
         </GridItem>
         <GridItem className="content">
-          <GridContainer direction="row">
+          <GridContainer direction="row" justifyContent="space-between">
             <GridItem className="title">
               <GridContainer direction="column">
                 {content.contentLeft &&
                   content.contentLeft.map((leftContent) => {
                     return (
-                      <GridItem className="title">
-                        <div>{leftContent}</div>
+                      <GridItem>
+                        <div className="leftContentText">{leftContent}</div>
                       </GridItem>
                     );
                   })}
@@ -47,7 +47,7 @@ export default function SummaryCard(props) {
                   content.contentRight.map((rightContent) => {
                     return (
                       <GridItem className="title">
-                        <div>{rightContent}</div>
+                        <div className="rightContentText">{rightContent}</div>
                       </GridItem>
                     );
                   })}

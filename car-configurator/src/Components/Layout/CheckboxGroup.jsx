@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../../Styles/muiTheme';
 
 export default function CheckboxGroup(props) {
   const { options } = props;
@@ -34,32 +36,34 @@ export default function CheckboxGroup(props) {
   }, [selectedOptions]);
 
   return (
-    <FormGroup>
-      <GridContainer>
-        {options &&
-          options.map((option) => {
-            let checkedOption = selectedOptions.some((selectedOption) => {
-              if (selectedOption.label === option.label) {
-                return true;
-              }
-            });
-            return (
-              <GridItem key={option.label}>
-                <FormControlLabel
-                  value={option}
-                  control={<Checkbox checked={checkedOption} />}
-                  label={option.label}
-                  onChange={() => handleChange(option)}
-                  sx={{
-                    '& .MuiSvgIcon-root': {
-                      fontSize: 14,
-                    },
-                  }}
-                />
-              </GridItem>
-            );
-          })}
-      </GridContainer>
-    </FormGroup>
+    <ThemeProvider theme={theme}>
+      <FormGroup>
+        <GridContainer>
+          {options &&
+            options.map((option) => {
+              let checkedOption = selectedOptions.some((selectedOption) => {
+                if (selectedOption.label === option.label) {
+                  return true;
+                }
+              });
+              return (
+                <GridItem key={option.label}>
+                  <FormControlLabel
+                    value={option}
+                    control={<Checkbox checked={checkedOption} />}
+                    label={option.label}
+                    onChange={() => handleChange(option)}
+                    sx={{
+                      '& .MuiSvgIcon-root': {
+                        fontSize: 14,
+                      },
+                    }}
+                  />
+                </GridItem>
+              );
+            })}
+        </GridContainer>
+      </FormGroup>
+    </ThemeProvider>
   );
 }

@@ -49,7 +49,7 @@ export default function CouponEntry(props) {
     <div className="coupon">
       {couponClicked ? (
         !couponValidated ? (
-          <div>
+          <div className="couponEntryContainer">
             <input
               type="text"
               id="coupon"
@@ -59,18 +59,34 @@ export default function CouponEntry(props) {
               placeholder="Unesite kod kupona ovdje"
               onChange={(e) => setCouponText(e.target.value)}
             />
-            <button onClick={() => checkCoupon()}>Primijeni</button>
-            {showWrongCouponMessage ? <div>Kupon nije važeći</div> : null}
+            <button onClick={() => checkCoupon()} className="applyCouponButton">
+              Primijeni
+            </button>
+            {showWrongCouponMessage ? (
+              <div className="couponErrorMessage">Kupon nije važeći</div>
+            ) : null}
           </div>
         ) : (
           <div>
-            <div>Hvala vam, unijeli ste ispravan kod kupona</div>
-            <div>OSNOVICA: {getLocalizedValue(props.baseTotal)} kn</div>
-            <div>Popust (30%): -{getLocalizedValue(discount)} kn</div>
+            <div className="couponSuccessMessage">
+              Hvala vam, unijeli ste ispravan kod kupona
+            </div>
+            <div className="baseTotalInfo">
+              OSNOVICA:{' '}
+              <div className="infoValue">
+                {getLocalizedValue(props.baseTotal)} KN
+              </div>
+            </div>
+            <div className="discountInfo">
+              Popust (30%): -
+              <div className="infoValue">{getLocalizedValue(discount)} KN</div>
+            </div>
           </div>
         )
       ) : (
-        <div onClick={() => changeToCouponView()}>Imam kupon</div>
+        <div onClick={() => changeToCouponView()} className="couponEntryText">
+          Imam kupon
+        </div>
       )}
     </div>
   );

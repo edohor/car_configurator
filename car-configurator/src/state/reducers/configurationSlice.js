@@ -51,6 +51,9 @@ export const configurationSlice = createSlice({
       state.userInfo = action.payload;
     },
     sendForm: (state, action) => {},
+    resetState: () => {
+      return initialState;
+    },
   },
 });
 
@@ -67,6 +70,7 @@ export const {
   saveDiscountedTotal,
   saveUserInfo,
   sendForm,
+  resetState,
 } = configurationSlice.actions;
 
 export default configurationSlice.reducer;
