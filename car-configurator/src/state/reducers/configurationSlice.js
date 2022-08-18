@@ -8,7 +8,12 @@ const initialState = {
   discounted: false,
   discount: 0,
   discountedTotal: 0,
-  userInfo: {},
+  userInfo: {
+    name: '',
+    phoneNumber: '',
+    email: '',
+    note: '',
+  },
 };
 
 export const configurationSlice = createSlice({
@@ -20,6 +25,9 @@ export const configurationSlice = createSlice({
     },
     decrementStep: (state) => {
       state.configurationStep -= 1;
+    },
+    jumpToStep: (state, action) => {
+      state.configurationStep = action.payload;
     },
     selectCarMake: (state, action) => {
       state.carMake = action.payload;
@@ -50,6 +58,7 @@ export const configurationSlice = createSlice({
 export const {
   incrementStep,
   decrementStep,
+  jumpToStep,
   selectCarMake,
   selectServices,
   saveTotal,

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function CouponEntry(props) {
   const state = useSelector((state) => state.configuration);
+
   const [couponClicked, setCouponClicked] = useState(false);
   const [couponValidated, setCouponValidated] = useState(false);
   const [showWrongCouponMessage, setShowWrongCouponMessage] = useState(false);

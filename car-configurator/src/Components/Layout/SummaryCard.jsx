@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
-import { useSelector, useDispatch } from 'react-redux';
-import { saveUserInfo } from '../../state/reducers/configurationSlice';
+import { useDispatch } from 'react-redux';
+import { jumpToStep } from '../../state/reducers/configurationSlice';
 
 export default function SummaryCard(props) {
   const dispatch = useDispatch();
-  const { title, content, ...rest } = props;
+  const { title, content, displayEditButton, step } = props;
 
   return (
     <div className="modalWindowContainerQuestion">
@@ -16,11 +16,15 @@ export default function SummaryCard(props) {
             <GridItem className="title">
               <div>{title}</div>
             </GridItem>
-            <GridItem className="title">
-              <div>
-                <button onClick={null}>Uredi</button>
-              </div>
-            </GridItem>
+            {displayEditButton && (
+              <GridItem className="title">
+                <div>
+                  <button onClick={() => dispatch(jumpToStep(step))}>
+                    Uredi
+                  </button>
+                </div>
+              </GridItem>
+            )}
           </GridContainer>
         </GridItem>
         <GridItem className="content">

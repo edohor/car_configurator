@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SummaryCard from '../Layout/SummaryCard';
 import { getLocalizedValue } from '../../Helpers/questionHelper';
 
 export default function SummaryScreen() {
-  const dispatch = useDispatch();
   const state = useSelector((state) => state.configuration);
 
   const carMakeContent = {
@@ -89,12 +88,16 @@ export default function SummaryScreen() {
                   <SummaryCard
                     title={'Model vozila'}
                     content={carMakeContent}
+                    displayEditButton={true}
+                    step={1}
                   />
                 </GridItem>
                 <GridItem className="inputContainer">
                   <SummaryCard
                     title={'Odabrane usluge'}
                     content={servicesContent}
+                    displayEditButton={true}
+                    step={2}
                   />
                 </GridItem>
               </GridContainer>
@@ -105,10 +108,16 @@ export default function SummaryScreen() {
                   <SummaryCard
                     title={'Kontakt podaci'}
                     content={userNameAndPhoneContent}
+                    displayEditButton={true}
+                    step={3}
                   />
                 </GridItem>
                 <GridItem className="inputContainer">
-                  <SummaryCard title={''} content={userEmailAndNoteContent} />
+                  <SummaryCard
+                    title={''}
+                    content={userEmailAndNoteContent}
+                    displayEditButton={false}
+                  />
                 </GridItem>
               </GridContainer>
             </GridItem>

@@ -4,7 +4,7 @@ import GridItem from '../Layout/Grid/GridItem';
 import GridContainer from '../Layout/Grid/GridContainer';
 
 export default function CheckboxGroup(props) {
-  const { options, ...rest } = props;
+  const { options } = props;
   const [selectedOptions, setSelectedOptions] = useState(
     props?.selectedOptions ? props.selectedOptions : []
   );

@@ -9,7 +9,7 @@ import GridItem from './Grid/GridItem';
 import GridContainer from './Grid/GridContainer';
 
 export default function RadioButtonsGroup(props) {
-  const { options, ...rest } = props;
+  const { options } = props;
   const [value, setValue] = useState(
     props?.selectedOption ? props.selectedOption : null
   );
