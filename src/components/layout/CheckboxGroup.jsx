@@ -32,7 +32,7 @@ export default function CheckboxGroup(props) {
   };
 
   useEffect(() => {
-    props.buttonSelected && props.buttonSelected(selectedOptions);
+    props?.buttonSelected(selectedOptions);
   }, [selectedOptions]);
 
   return (

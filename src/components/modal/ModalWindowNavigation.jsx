@@ -10,7 +10,7 @@ export default function ModalWindowNavigation(props) {
     (state) => state.configuration.configurationStep
   );
 
-  const postData = (step) => {
+  const postData = () => {
     // send data to API
     props.goNext(configurationStep);
   };

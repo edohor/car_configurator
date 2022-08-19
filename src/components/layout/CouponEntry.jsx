@@ -57,6 +57,7 @@ export default function CouponEntry(props) {
               maxLength="8"
               size="30"
               placeholder="Unesite kod kupona ovdje"
+              className="couponEntryInput"
               onChange={(e) => setCouponText(e.target.value)}
             />
             <button onClick={() => checkCoupon()} className="applyCouponButton">

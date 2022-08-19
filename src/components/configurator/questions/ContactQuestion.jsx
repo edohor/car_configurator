@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import GridItem from '../layout/Grid/GridItem';
-import GridContainer from '../layout/Grid/GridContainer';
+import GridItem from '../../layout/Grid/GridItem';
+import GridContainer from '../../layout/Grid/GridContainer';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserInfo } from '../../store/reducers/configurationSlice';
+import { saveUserInfo } from '../../../store/reducers/configurationSlice';
 
 export default function ContactQuestion() {
   const dispatch = useDispatch();
@@ -16,6 +16,8 @@ export default function ContactQuestion() {
     state?.email ? state.email : ''
   );
   const [note, setNote] = useState(state?.note ? state.note : '');
+  const [showEmailValidationMessage, setShowEmailValidationMessage] =
+    useState(false);
 
   useEffect(() => {
     const userInfo = {
@@ -26,6 +28,14 @@ export default function ContactQuestion() {
     };
     dispatch(saveUserInfo(userInfo));
   }, [name, phoneNumber, emailAddress, note]);
+
+  const checkEmailValidation = () => {
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailAddress) === false) {
+      setShowEmailValidationMessage(true);
+    } else {
+      setShowEmailValidationMessage(false);
+    }
+  };
 
   return (
     <div className="modalWindowContainerQuestion">
@@ -47,13 +57,29 @@ export default function ContactQuestion() {
                   />
                 </GridItem>
                 <GridItem className="inputContainer" xs={6}>
-                  <input
-                    type="text"
-                    placeholder="Email adresa*"
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    className="dataInput"
-                  />
+                  <GridContainer direction="column">
+                    <GridItem className="">
+                      <input
+                        type="text"
+                        placeholder="Email adresa*"
+                        value={emailAddress}
+                        onChange={(e) => setEmailAddress(e.target.value)}
+                        className={
+                          showEmailValidationMessage
+                            ? 'dataInputError'
+                            : 'dataInput'
+                        }
+                        onBlur={checkEmailValidation}
+                      />
+                    </GridItem>
+                    {showEmailValidationMessage && (
+                      <GridItem className="">
+                        <div className="emailValidationMessage">
+                          Email adresa mora biti u formatu ime@email.com
+                        </div>
+                      </GridItem>
+                    )}
+                  </GridContainer>
                 </GridItem>
               </GridContainer>
             </GridItem>
@@ -64,6 +90,7 @@ export default function ContactQuestion() {
                     type="text"
                     placeholder="Broj telefona*"
                     value={phoneNumber}
+                    maxLength="9"
                     onChange={(e) =>
                       /^[0-9]+$|^$/.test(e.target.value)
                         ? setPhoneNumber(e.target.value)

@@ -3,11 +3,11 @@ import '../../styles/ModalWindow.css';
 import GridItem from '../layout/Grid/GridItem';
 import GridContainer from '../layout/Grid/GridContainer';
 import ModalWindowNavigation from './ModalWindowNavigation';
-import CarMakeQuestion from '../configurator/CarMakeQuestion';
-import ServicesQuestion from '../configurator/ServicesQuestion';
-import ContactQuestion from '../configurator/ContactQuestion';
-import SummaryScreen from '../configurator/SummaryScreen';
-import ClosingScreen from '../configurator/ClosingScreen';
+import CarMakeQuestion from '../configurator/questions/CarMakeQuestion';
+import ServicesQuestion from '../configurator/questions/ServicesQuestion';
+import ContactQuestion from '../configurator/questions/ContactQuestion';
+import SummaryScreen from '../configurator/screens/SummaryScreen';
+import ClosingScreen from '../configurator/screens/SuccessScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   incrementStep,
@@ -29,7 +29,7 @@ export default function ModalWindowContent(props) {
 
   const closeModalWindow = () => {
     dispatch(jumpToStep(1));
-    props.closeModalWindow && props.closeModalWindow();
+    props?.closeModalWindow();
   };
 
   const displayWarningMessage = (message) => {
@@ -97,6 +97,7 @@ export default function ModalWindowContent(props) {
                 alt="close"
                 height="40px"
                 width="40px"
+                className="closeModalButton"
                 onClick={() => closeModalWindow()}
               />
             </GridItem>

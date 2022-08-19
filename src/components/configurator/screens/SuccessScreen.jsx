@@ -1,8 +1,8 @@
 import React from 'react';
-import GridItem from '../layout/Grid/GridItem';
-import GridContainer from '../layout/Grid/GridContainer';
+import GridItem from '../../layout/Grid/GridItem';
+import GridContainer from '../../layout/Grid/GridContainer';
 
-export default function ClosingScreen(props) {
+export default function SuccessScreen(props) {
   return (
     <div className="modalWindowContainerFinal">
       <GridContainer direction="column">

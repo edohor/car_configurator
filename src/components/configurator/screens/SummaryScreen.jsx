@@ -1,9 +1,9 @@
 import React from 'react';
-import GridItem from '../layout/Grid/GridItem';
-import GridContainer from '../layout/Grid/GridContainer';
+import GridItem from '../../layout/Grid/GridItem';
+import GridContainer from '../../layout/Grid/GridContainer';
 import { useSelector } from 'react-redux';
-import SummaryCard from '../layout/SummaryCard';
-import { getLocalizedValue } from '../../helpers/questionHelper';
+import SummaryCard from '../../layout/SummaryCard';
+import { getLocalizedValue } from '../../../helpers/questionHelper';
 import Divider from '@mui/material/Divider';
 
 export default function SummaryScreen() {
@@ -61,6 +61,17 @@ export default function SummaryScreen() {
     contentRight: getUserEmailAndNoteContent(),
   };
 
+  const getSummaryCard = (title, content, displayEditButton, step) => {
+    return (
+      <SummaryCard
+        title={title}
+        content={content}
+        displayEditButton={displayEditButton}
+        step={step}
+      />
+    );
+  };
+
   return (
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
@@ -81,20 +92,10 @@ export default function SummaryScreen() {
             <GridItem className="summaryRow">
               <GridContainer direction="row">
                 <GridItem className="summaryCardContainer" xs={6}>
-                  <SummaryCard
-                    title={'Model vozila'}
-                    content={carMakeContent}
-                    displayEditButton={true}
-                    step={1}
-                  />
+                  {getSummaryCard('Model vozila', carMakeContent, true, 1)}
                 </GridItem>
                 <GridItem className="summaryCardContainer" xs={6}>
-                  <SummaryCard
-                    title={'Odabrane usluge'}
-                    content={servicesContent}
-                    displayEditButton={true}
-                    step={2}
-                  />
+                  {getSummaryCard('Odabrane usluge', servicesContent, true, 2)}
                 </GridItem>
               </GridContainer>
             </GridItem>
@@ -108,19 +109,15 @@ export default function SummaryScreen() {
             <GridItem className="summaryRow">
               <GridContainer direction="row">
                 <GridItem className="summaryCardContainer" xs={6}>
-                  <SummaryCard
-                    title={'Kontakt podaci'}
-                    content={userNameAndPhoneContent}
-                    displayEditButton={true}
-                    step={3}
-                  />
+                  {getSummaryCard(
+                    'Kontakt podaci',
+                    userNameAndPhoneContent,
+                    true,
+                    3
+                  )}
                 </GridItem>
                 <GridItem className="summaryCardContainer" xs={6}>
-                  <SummaryCard
-                    title={''}
-                    content={userEmailAndNoteContent}
-                    displayEditButton={false}
-                  />
+                  {getSummaryCard('', userEmailAndNoteContent, false)}
                 </GridItem>
               </GridContainer>
             </GridItem>

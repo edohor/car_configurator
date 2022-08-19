@@ -8,6 +8,7 @@ button {
   font-family: "abeezee";
   font-size: 12px;
   font-weight: 500;
+  box-shadow: 3px 3px;
   cursor: pointer;
 }
 
@@ -21,6 +22,28 @@ button {
 }
 .basePage .starterButton {
   margin-top: 20px;
+}
+.basePage .basePageHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  border-bottom: 3px solid #000;
+  margin: 20px 0;
+}
+.basePage .basePageHeader .basePageLogoContainer {
+  margin-left: 8%;
+}
+.basePage .basePageHeader .basePageHeaderTitleContainer {
+  margin-left: 30px;
+  text-align: left;
+}
+.basePage .basePageHeader .basePageHeaderTitleContainer .basePageHeaderTitle {
+  font-size: 24px;
+}
+.basePage .basePageHeader .basePageHeaderTitleContainer .basePageHeaderSubtitle {
+  font-size: 20px;
 }
 
 .modalWindow {
@@ -37,6 +60,9 @@ button {
   font-family: "abeezee";
   font-size: 16px;
   background-color: #fff;
+}
+.modalWindow .modalWindowContainer .closeModalButton {
+  cursor: pointer;
 }
 .modalWindow .modalWindowContainer .modalWindow {
   height: 100%;
@@ -87,10 +113,22 @@ button {
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .dataInput {
   padding: 5px;
-  border: 2px solid #000;
   margin-bottom: 20px;
   min-width: 200px;
   width: 100%;
+  border: 2px solid #000;
+}
+.modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .dataInputError {
+  padding: 5px;
+  margin-bottom: 20px;
+  min-width: 200px;
+  width: 100%;
+  border: 2px solid rgb(209, 40, 40);
+}
+.modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .emailValidationMessage {
+  color: rgb(209, 40, 40);
+  margin-top: -10px;
+  font-size: 12px;
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .dataInputContainer .textAreaInput {
   padding: 5px;
@@ -149,6 +187,9 @@ button {
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponEntryContainer {
   margin-bottom: 10px;
+}
+.modalWindow .modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponEntryContainer .couponEntryInput {
+  height: 22px;
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .couponErrorMessage {
   color: rgb(209, 40, 40);

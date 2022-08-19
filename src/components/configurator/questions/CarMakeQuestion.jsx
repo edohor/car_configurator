@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import GridItem from '../layout/Grid/GridItem';
-import GridContainer from '../layout/Grid/GridContainer';
-import RadioButtonsGroup from '../layout/RadioButtonsGroup';
-import { getCarMakes } from '../../helpers/questionHelper';
+import React from 'react';
+import GridItem from '../../layout/Grid/GridItem';
+import GridContainer from '../../layout/Grid/GridContainer';
+import RadioButtonsGroup from '../../layout/RadioButtonsGroup';
+import { getCarMakes } from '../../../helpers/questionHelper';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCarMake } from '../../store/reducers/configurationSlice';
+import { selectCarMake } from '../../../store/reducers/configurationSlice';
 
 export default function CarMakeQuestion() {
   const carMakes = getCarMakes();
   const state = useSelector((state) => state.configuration);
   const dispatch = useDispatch();
 
-  const [selectedCarMake, setSelectedCarMake] = useState(
-    state?.carMake ? state.carMake : null
-  );
-
   const saveCarMake = (carMake) => {
-    setSelectedCarMake(carMake);
     dispatch(selectCarMake(carMake));
   };
 
@@ -30,7 +25,7 @@ export default function CarMakeQuestion() {
           <RadioButtonsGroup
             options={carMakes}
             buttonSelected={(carMake) => saveCarMake(carMake)}
-            selectedOption={selectedCarMake}
+            selectedOption={state?.carMake}
           />
         </GridItem>
       </GridContainer>

@@ -21,7 +21,7 @@ export default function RadioButtonsGroup(props) {
   };
 
   useEffect(() => {
-    props.buttonSelected && props.buttonSelected(value);
+    props?.buttonSelected(value);
   }, [value]);
 
   return (
