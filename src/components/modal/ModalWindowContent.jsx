@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import '../../Styles/ModalWindow.css';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import '../../styles/ModalWindow.css';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 import ModalWindowNavigation from './ModalWindowNavigation';
-import CarMakeQuestion from '../Configurator/CarMakeQuestion';
-import ServicesQuestion from '../Configurator/ServicesQuestion';
-import ContactQuestion from '../Configurator/ContactQuestion';
-import SummaryScreen from '../Configurator/SummaryScreen';
-import ClosingScreen from '../Configurator/ClosingScreen';
+import CarMakeQuestion from '../configurator/CarMakeQuestion';
+import ServicesQuestion from '../configurator/ServicesQuestion';
+import ContactQuestion from '../configurator/ContactQuestion';
+import SummaryScreen from '../configurator/SummaryScreen';
+import ClosingScreen from '../configurator/ClosingScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   incrementStep,
   decrementStep,
   jumpToStep,
-} from '../../state/reducers/configurationSlice';
+} from '../../store/reducers/configurationSlice';
 import { CloseIcon } from '../../assets/iconsList';
 
 export default function ModalWindowContent(props) {

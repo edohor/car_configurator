@@ -1,9 +1,10 @@
 import React from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 import { useSelector } from 'react-redux';
-import SummaryCard from '../Layout/SummaryCard';
-import { getLocalizedValue } from '../../Helpers/questionHelper';
+import SummaryCard from '../layout/SummaryCard';
+import { getLocalizedValue } from '../../helpers/questionHelper';
+import Divider from '@mui/material/Divider';
 
 export default function SummaryScreen() {
   const state = useSelector((state) => state.configuration);
@@ -24,7 +25,7 @@ export default function SummaryScreen() {
   const getServicesPrices = () => {
     let servicePrices = [];
     state.services.forEach((service) => {
-      servicePrices.push(getLocalizedValue(service.price) + ' kn');
+      servicePrices.push(getLocalizedValue(service.price) + ' KN');
     });
     state.discounted && servicePrices.push(getLocalizedValue(state.discount));
     servicePrices.push(getLocalizedValue(state.discountedTotal));
@@ -96,6 +97,13 @@ export default function SummaryScreen() {
                   />
                 </GridItem>
               </GridContainer>
+            </GridItem>
+            <GridItem className="summaryRow">
+              <Divider
+                variant="middle"
+                className="divider"
+                style={{ width: '100%', margin: 0 }}
+              />
             </GridItem>
             <GridItem className="summaryRow">
               <GridContainer direction="row">

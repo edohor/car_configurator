@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../../Styles/muiTheme';
+import { theme } from '../../styles/muiTheme';
 
 export default function CheckboxGroup(props) {
   const { options } = props;

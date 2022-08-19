@@ -1,6 +1,6 @@
 import React from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 
 export default function ClosingScreen(props) {
   return (

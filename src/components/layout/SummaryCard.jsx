@@ -1,8 +1,8 @@
 import React from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 import { useSelector, useDispatch } from 'react-redux';
-import { jumpToStep } from '../../state/reducers/configurationSlice';
+import { jumpToStep } from '../../store/reducers/configurationSlice';
 
 export default function SummaryCard(props) {
   const dispatch = useDispatch();

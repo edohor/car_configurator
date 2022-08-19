@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getLocalizedValue } from '../../Helpers/questionHelper';
+import { getLocalizedValue } from '../../helpers/questionHelper';
 import { useSelector } from 'react-redux';
 
 export default function CouponEntry(props) {

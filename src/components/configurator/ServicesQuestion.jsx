@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
-import CheckboxGroup from '../Layout/CheckboxGroup';
-import CouponEntry from '../Layout/CouponEntry';
-import { getServices, getLocalizedValue } from '../../Helpers/questionHelper';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
+import CheckboxGroup from '../layout/CheckboxGroup';
+import CouponEntry from '../layout/CouponEntry';
+import { getServices, getLocalizedValue } from '../../helpers/questionHelper';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectServices,
@@ -11,7 +11,7 @@ import {
   saveDiscounted,
   saveDiscount,
   saveDiscountedTotal,
-} from '../../state/reducers/configurationSlice';
+} from '../../store/reducers/configurationSlice';
 
 export default function ServicesQuestion() {
   const services = getServices();

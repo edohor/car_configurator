@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import '../Styles/ModalWindow.css';
-import ModalWindowContent from './ModalWindow/ModalWindowContent';
-import GridItem from './Layout/Grid/GridItem';
-import GridContainer from './Layout/Grid/GridContainer';
+import '../styles/ModalWindow.css';
+import ModalWindowContent from './modal/ModalWindowContent';
+import GridItem from './layout/Grid/GridItem';
+import GridContainer from './layout/Grid/GridContainer';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
-import { resetState } from '../state/reducers/configurationSlice';
+import { resetState } from '../store/reducers/configurationSlice';
 
 export default function ConfiguratorStarterPage() {
   const dispatch = useDispatch();

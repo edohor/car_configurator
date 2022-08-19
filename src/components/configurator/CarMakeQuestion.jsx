@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
-import RadioButtonsGroup from '../Layout/RadioButtonsGroup';
-import { getCarMakes } from '../../Helpers/questionHelper';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
+import RadioButtonsGroup from '../layout/RadioButtonsGroup';
+import { getCarMakes } from '../../helpers/questionHelper';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCarMake } from '../../state/reducers/configurationSlice';
+import { selectCarMake } from '../../store/reducers/configurationSlice';
 
 export default function CarMakeQuestion() {
   const carMakes = getCarMakes();

@@ -1,5 +1,5 @@
 import React from 'react';
-import ConfiguratorStarterPage from './Components/ConfiguratorStarterPage';
+import ConfiguratorStarterPage from './components/ConfiguratorStarterPage';
 
 export default function App() {
   return (

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import GridItem from '../Layout/Grid/GridItem';
-import GridContainer from '../Layout/Grid/GridContainer';
+import GridItem from '../layout/Grid/GridItem';
+import GridContainer from '../layout/Grid/GridContainer';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserInfo } from '../../state/reducers/configurationSlice';
+import { saveUserInfo } from '../../store/reducers/configurationSlice';
 
 export default function ContactQuestion() {
   const dispatch = useDispatch();

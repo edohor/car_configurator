@@ -8,7 +8,7 @@ import {
 import GridItem from './Grid/GridItem';
 import GridContainer from './Grid/GridContainer';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '../../Styles/muiTheme';
+import { theme } from '../../styles/muiTheme';
 
 export default function RadioButtonsGroup(props) {
   const { options } = props;
