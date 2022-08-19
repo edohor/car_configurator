@@ -52,12 +52,12 @@ export default function SummaryScreen() {
   };
 
   const userNameAndPhoneContent = {
-    contentLeft: ['Ime i prezime', 'Broj telefona'],
+    contentLeft: ['Ime i prezime:', 'Broj telefona:'],
     contentRight: getUserNameAndPhoneContent(),
   };
 
   const userEmailAndNoteContent = {
-    contentLeft: ['Email adresa', 'Napomena'],
+    contentLeft: ['Email adresa:', 'Napomena:'],
     contentRight: getUserEmailAndNoteContent(),
   };
 
@@ -76,7 +76,7 @@ export default function SummaryScreen() {
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
         <GridItem className="title">
-          <div>Korak 4: Pregled i potvrda vašeg odabira</div>
+          <div>Korak 4. Pregled i potvrda vašeg odabira</div>
         </GridItem>
         <GridItem className="summaryText">
           <div>

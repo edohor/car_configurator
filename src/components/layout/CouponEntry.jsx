@@ -9,7 +9,7 @@ export default function CouponEntry(props) {
   const [couponValidated, setCouponValidated] = useState(false);
   const [showWrongCouponMessage, setShowWrongCouponMessage] = useState(false);
   const [couponText, setCouponText] = useState('');
-  const [discount, setdiscount] = useState(
+  const [discount, setDiscount] = useState(
     state?.discount ? state.discount : 0
   );
 
@@ -21,7 +21,7 @@ export default function CouponEntry(props) {
   }, [props, props.applyDiscount]);
 
   const calculateDiscount = () => {
-    props.baseTotal && setdiscount(props.baseTotal * 0.3);
+    setDiscount(props?.baseTotal * 0.3);
   };
 
   const checkCoupon = () => {

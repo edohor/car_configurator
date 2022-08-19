@@ -81,7 +81,7 @@ button {
 }
 .modalWindow .modalWindowContainer .modalWindowFooter .modalWindowNavigation .modalWindowNavigationContainer {
   position: absolute;
-  right: 40px;
+  right: 30px;
 }
 .modalWindow .modalWindowContainer .modalWindowFooter .modalWindowNavigation .forwardNavigationContainer {
   margin-left: 20px;

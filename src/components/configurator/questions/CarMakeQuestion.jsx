@@ -19,7 +19,7 @@ export default function CarMakeQuestion() {
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
         <GridItem className="title">
-          <div>Korak 1: Odaberite proizvođača vašeg vozila</div>
+          <div>Korak 1. Odaberite proizvođača vašeg vozila</div>
         </GridItem>
         <GridItem className="content">
           <RadioButtonsGroup

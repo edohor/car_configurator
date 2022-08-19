@@ -41,7 +41,7 @@ export default function ContactQuestion() {
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
         <GridItem className="title">
-          <div>Korak 3: Vaši kontakt podaci</div>
+          <div>Korak 3. Vaši kontakt podaci</div>
         </GridItem>
         <GridItem className="content">
           <GridContainer direction="column" className="dataInputContainer">

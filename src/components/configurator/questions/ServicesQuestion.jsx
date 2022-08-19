@@ -68,7 +68,7 @@ export default function ServicesQuestion() {
     <div className="modalWindowContainerQuestion">
       <GridContainer direction="column">
         <GridItem className="title">
-          <div>Korak 2: Odaberite jednu ili više usluga za koje ste</div>
+          <div>Korak 2. Odaberite jednu ili više usluga za koje ste</div>
         </GridItem>
         <GridItem className="content">
           <CheckboxGroup
