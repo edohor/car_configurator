@@ -101,8 +101,7 @@ button {
   width: 100%;
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .summaryRow {
-  margin: 0;
-  padding: 0;
+  max-height: 300px;
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .content .summaryCardContainer {
   margin-top: 20px;
@@ -137,9 +136,6 @@ button {
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .summaryText {
   font-size: 14px;
   margin-top: 20px;
-}
-.modalWindow .modalWindowContainer .modalWindowContainerQuestion .totalInfo {
-  height: 120px;
 }
 .modalWindow .modalWindowContainer .modalWindowContainerQuestion .pricesAndCouponContainer .pricesAndCoupon {
   margin-top: 40px;

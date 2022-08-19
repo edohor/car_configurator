@@ -121,8 +121,7 @@ button {
         }
 
         .summaryRow {
-          margin: 0;
-          padding: 0;
+          max-height: 300px;
         }
 
         .summaryCardContainer {
@@ -166,10 +165,6 @@ button {
       .summaryText {
         font-size: 14px;
         margin-top: 20px;
-      }
-
-      .totalInfo {
-        height: 120px;
       }
 
       .pricesAndCouponContainer {
