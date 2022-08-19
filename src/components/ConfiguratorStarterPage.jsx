@@ -35,7 +35,7 @@ export default function ConfiguratorStarterPage() {
           </div>
         </GridItem>
       </GridContainer>
-      <GridContainer direction="column">
+      <GridContainer direction="column" className="basePageContent">
         <GridItem className="basePageTitle">
           <div>Pritisnite gumb niže kako biste pokrenuli</div>
         </GridItem>
@@ -43,13 +43,10 @@ export default function ConfiguratorStarterPage() {
           <button onClick={() => openModalWindow()}>Pokreni</button>
         </GridItem>
       </GridContainer>
-      <Modal
-        open={modalWindowOpened}
-        onClose={() => closeModalWindow()}
-        className="modalWindow"
-        style={{}}
-      >
-        <ModalWindowContent closeModalWindow={() => closeModalWindow()} />
+      <Modal open={modalWindowOpened} onClose={() => closeModalWindow()}>
+        <div className="modalWindow">
+          <ModalWindowContent closeModalWindow={() => closeModalWindow()} />
+        </div>
       </Modal>
     </div>
   );

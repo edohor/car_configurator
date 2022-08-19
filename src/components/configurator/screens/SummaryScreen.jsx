@@ -84,7 +84,7 @@ export default function SummaryScreen() {
             Ukoliko želite promijeniti neki od podataka, možete pritisnuti gumb
             za uređivanje pored svake od kategorija. Kada ste provjerili i
             potvrdili ispravnost svojih podataka pritisnite gumb pošalji na dnu
-            za slanje upita za servis
+            za slanje upita za servis.
           </div>
         </GridItem>
         <GridItem className="content">

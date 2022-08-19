@@ -56,7 +56,6 @@ export const configurationSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const {
   incrementStep,
   decrementStep,
